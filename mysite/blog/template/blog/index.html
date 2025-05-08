@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VXP Blog Universe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #000, #1a1a1a);
+            font-family: 'Roboto', sans-serif;
+            color: #FFD700;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5em;
+            text-shadow: 0 0 20px gold;
+            color: #FFD700;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .blog-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .blog-card {
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            transition: transform 0.5s ease, background 0.5s ease;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+        }
+
+        .blog-card:hover {
+            background: rgba(255, 215, 0, 0.1);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .blog-card h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5em;
+            color: #fff;
+        }
+
+        .blog-card p {
+            color: #ccc;
+            margin-top: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+            }
+
+            to {
+                text-shadow: 0 0 30px rgba(255, 215, 0, 0.9);
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>VXP Blog Universe</h1>
+        <p style="color:#bbb;">Explore deep knowledge crafted by Queen Osuji & the Versatile Experts</p>
+    </header>
+
+    <div class="blog-list">
+        <a href="blog1.html">
+            <div class="blog-card">
+                <h2>🚀 How to Get Hired in Tech Without a Degree</h2>
+                <p>Break into tech, no degree needed—just skills, proof, and purpose.</p>
+            </div>
+        </a>
+        <a href="blog2.html">
+            <div class="blog-card">
+                <h2>👩🏽‍💻 Women in AI: Leading a Digital Revolution</h2>
+                <p>Stories, breakthroughs, and leadership from powerful women in AI.</p>
+            </div>
+        </a>
+        <a href="blog3.html">
+            <div class="blog-card">
+                <h2>💼 Creating a Personal Brand That Feels Like You</h2>
+                <p>Authentic branding that doesn’t just look good—it feels like home.</p>
+            </div>
+        </a>
+        <a href="blog4.html">
+            <div class="blog-card">
+                <h2>🎯 The Power of Prompt Engineering for Creators</h2>
+                <p>Prompts are the new magic. Learn how to wield them like a sorcerer.</p>
+            </div>
+        </a>
+    </div>
+
+    <footer>
+        &copy; 2025 VXP | Designed with cosmic care by Queen Osuji
+    </footer>
+</body>
+
+</html>

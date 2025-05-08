@@ -1,0 +1,349 @@
+C
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VXP | Versatile Expert</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* Importing Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@400;600&display=swap');
+
+        /* Body font – clean and modern */
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Headings – classy and bold */
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        .vxp-logo {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .vxp-logo:hover {
+            transform: scale(1.05) rotate(-1deg);
+        }
+
+
+        /* Paragraphs – readable and elegant */
+        p {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        /* Navigation and buttons – sleek */
+        nav .logo,
+        nav ul li a,
+        .cta a {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #000;
+            color: #FFD700;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section with Background Animation */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #000 0%, #000000 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(73, 73, 73, 0.5) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: gold;
+            animation: fadeInDown 1.5s ease-out;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00;
+            }
+
+            to {
+                text-shadow: 0 0 20px #ff9900, 0 0 30px #ffaa00;
+            }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-top: 1rem;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            color: #FFD700;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav ul li a {
+            color: #f0e68c;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #FFD700;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            background-color: #000000;
+            color: #f0e68c;
+        }
+
+        section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: #FFD700;
+        }
+
+        section p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Call to Action */
+        .cta {
+            background-color: #FFD700;
+            color: #000;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .cta a {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background-color: #000;
+            color: #FFD700;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .cta a:hover {
+            background-color: #333;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: #f0e68c;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background-color: none;
+            color: gold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            text-align: center;
+            font-weight: 700
+        }
+
+        .cta-button:hover {
+            background-color: rgba(154, 154, 154, 0.331);
+        }
+
+
+
+
+        .why-vxp p,
+        .soul-close p {
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+            color: var(--vxp-muted);
+            animation: fadeInUp 1.5s ease;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="V LOGO.jpg" alt="VXP logo" class="vxp-logo">
+            </a>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="./mysite/blog/template/blog/index.html">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="service.html">Services</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to VXP</h1>
+            <p>Empowering creators, innovators, and companies worldwide.</p>
+            <a href="signinindex.html" class="cta-button">Seize your Result</a>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About VXP</h2>
+        <p>VXP (Versatile Expert Platform) is a tech and design company led by Queen Osuji, dedicated to empowering
+            creators, innovators, and companies worldwide through cutting-edge solutions and visionary strategies.</p>
+
+
+        </div>
+
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <p>We offer a range of services including AI & Machine Learning Consulting, Graphic Design & Brand Identity, Job
+            Mentorship & Tech Training, eBook Publishing & Prompt Sales, and Empowering Women in Tech.</p>
+    </section>
+    <section class="why-vxp">
+        <h2>Maybe you're not lost. Maybe you're just growing.</h2>
+        <p>
+            At VXP, we don’t just help you design things.
+            We help you discover the parts of yourself or your business that are ready to show up differently.
+        </p>
+        <p>
+            You don’t need more pressure.
+            You need space. A spark. A partner that gets it — and gives a damn.
+        </p>
+    </section>
+
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <h2>Join the VXP Movement</h2>
+        <p>Ready to elevate your digital presence? Let's build something extraordinary together.</p>
+        <a href="signinindex.html">Get Started</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2020–2025 VXP. Designed & Led by Queen Osuji. All Rights Reserved.</p>
+        <p>Empowering the Next Generation of Experts, One Skill at a Time.</p>
+    </footer>
+
+</body>
+
+</html>

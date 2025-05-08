@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In | VXP</title>
+    <link rel="stylesheet" href="signin.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+</head>
+
+<body>
+    <canvas id="vxpBackground"></canvas>
+
+    <div class="wrapper">
+
+        <div class="glass">
+
+            <div class="signin-signup">
+                <!-- Sign In Form -->
+                <form action="" class="sign-in-form">
+                    <h2 class="title">Welcome Back</h2>
+                    <p class="form-intro">You already know your goals. Let’s get you back on track.</p>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Username" required />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" required />
+                    </div>
+                    <input type="submit" value="Login" class="btn" />
+                    <p class="social-text">Or sign in with</p>
+                    <div class="social-media">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </form>
+
+                <!-- Sign Up Form -->
+                <form action="" class="sign-up-form">
+                    <h2 class="title">Create Account</h2>
+                    <p class="form-intro">Where your ideas become reality. Let’s get started.</p>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Username" required />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Email" required />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" required />
+                    </div>
+                    <input type="submit" value="Sign Up" class="btn" />
+                    <p class="social-text">Or sign up with</p>
+                    <div class="social-media">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Panel Section -->
+            <div class="panels-container">
+                <div class="panel left-panel">
+                    <div class="content">
+                        <h3>Already part of the journey?</h3>
+                        <p>We’ve missed your ideas. Sign in and show us what you’re building next.</p>
+                        <button class="btn" id="sign-in-btn">Sign in</button>
+                    </div>
+                    <img src="signup.svg" alt="signup" class="image" />
+                </div>
+                <div class="panel right-panel">
+                    <div class="content">
+                        <h3>First time here?</h3>
+                        <p>Your bold journey begins today. Sign up to unlock your creative space.</p>
+                        <button class="btn" id="sign-up-btn">Sign up</button>
+                    </div>
+                    <img src="signin.svg" alt="signin" class="image" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="app.js"></script>
+
+    <script>
+        window.onload = function () {
+            const canvas = document.getElementById("vxpBackground");
+            const ctx = canvas.getContext("2d");
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            resizeCanvas();
+            window.addEventListener("resize", resizeCanvas);
+
+            let w = canvas.width;
+            let h = canvas.height;
+            let stars = [];
+            let waveOffset = 0;
+
+            function random(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            function Star() {
+                this.x = random(0, w);
+                this.y = random(0, h);
+                this.radius = random(0.5, 1.5);
+                this.alpha = random(0.1, 1);
+                this.color = `rgba(255, 215, 0, ${this.alpha})`; // gold glow
+            }
+
+            function createStars(count) {
+                stars = [];
+                for (let i = 0; i < count; i++) {
+                    stars.push(new Star());
+                }
+            }
+
+            function drawStars() {
+                for (let star of stars) {
+                    ctx.beginPath();
+                    ctx.arc(star.x, star.y, star.radius, 0, 2 * Math.PI);
+                    ctx.fillStyle = star.color;
+                    ctx.shadowColor = "#FFD700";
+                    ctx.shadowBlur = 20;
+                    ctx.fill();
+                }
+            }
+
+            function drawWaves() {
+                waveOffset += 0.02;
+                for (let i = 0; i < 5; i++) {
+                    ctx.beginPath();
+                    ctx.moveTo(0, h / 2 + i * 10);
+                    for (let x = 0; x < w; x++) {
+                        let y =
+                            Math.sin(x * 0.005 + waveOffset + i) * 15 +
+                            h / 2 +
+                            Math.sin(x * 0.01 + i * 100) * 4;
+                        ctx.lineTo(x, y);
+                    }
+                    ctx.strokeStyle = `rgba(255, 255, 255, ${0.03 + i * 0.01})`;
+                    ctx.stroke();
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, w, h);
+
+                let gradient = ctx.createRadialGradient(
+                    w / 2,
+                    h / 2,
+                    0,
+                    w / 2,
+                    h / 2,
+                    w * 0.7
+                );
+                gradient.addColorStop(0, "#1c1c1c");
+                gradient.addColorStop(1, "#000000");
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, w, h);
+
+                drawStars();
+                drawWaves();
+
+                requestAnimationFrame(animate);
+            }
+
+            createStars(150);
+            animate();
+        };
+    </script>
+
+</body>
+
+</html>
